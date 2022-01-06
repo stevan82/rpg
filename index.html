@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+
+<style>
+#game{;display:none}
+	body { padding:0; margin:0; height:100%; width:100%; }
+	div { font-family:arial; font-size:16px; font-weight:bold; text-align:center; }
+	body{background:black;}
+	//#screen {border:1px solid black;padding-left:10px;padding-right:10px;background:white}
+	.tab{float:left;display:block}
+	#lefttab{width:62px;height:600px;background:black;background-image:url("img/lefttab.png");}
+	#righttab{width:62px;height:600px;background-image:url("img/righttab.png")}
+	#main_menu{width:924px;height:550px;background:black;background-image:url("img/main_menu.jpg");background-size: 924px 550px;COLOR:WHITE;}
+	#story{width:924px;height:550px;background:black;background-image:url("img/story.png");background-size: 924px 550px;COLOR:WHITE;display:none}
+	#story_done{
+display:block;
+position:fixed;
+left:300px;
+top:510px;
+
+width:150px;
+height:30px;
+}
+#story_textarea{
+display:block;
+position:fixed;
+left:170px;
+top:340px;
+font-size: 70%;
+width:580px;
+height:160px;
+}
+	
+	
+	
+	#character_info{;display:none;width:924px;height:550px;background:black;background-image:url("img/character_info.png");background-size: 924px 550px;COLOR:WHITE;font-size: 70%;}
+	#stats{font-size: 70%;
+	position:fixed;
+	top:70px;
+	left:200px;
+	display:block}
+	#start_game{
+	
+	 position: relative;
+    top: 200px;
+    left: 195px;
+	height:30px;
+	width:140px;
+	padding:10px;
+	}
+	#char_info1{
+	
+	 position: relative;
+    top: 25px;
+    left: 220px;
+	height:30px;
+	width:440px;
+	padding:10px;
+	}
+	input[type=number]{
+    width: 50px;
+	font-size: 120%;
+} 
+#char_img{
+
+height:190px;
+display:block;
+width:115px;
+background-image:url("img/characters/char1.png");
+background-size: 100% 100%;
+background-repeat: no-repeat;
+
+position:fixed;
+left:412px;
+top:75px;
+}
+#to_game{
+display:block;
+position:fixed;
+left:370px;
+top:478px;
+
+width:200px;
+height:30px;
+}
+</style>
+<script type='text/javascript' src='game.js'></script>
+<script type='text/javascript' src='menus.js'></script>
+</head>
+ <audio id="bgmusic" autoplay repeat>
+  <source src="horse.ogg" type="audio/ogg">
+  <source src="snd/main.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio> 
+ <audio id="herosnd">
+  <source src="snd/warriorb.ogg" type="audio/ogg">
+  Your browser does not support the audio tag.
+</audio> 
+<body onload='main_menu()'>
+
+<div>
+	
+<!--	<input type='button' onClick='createWorld()' value='New World'>-->
+</div>
+<div id="game">
+	<div id="lefttab" class="tab"></div>
+	<div id="screen" class="tab"><canvas id="gameCanvas"></canvas></div>
+		<img src="img/easthaven.png" id="background" style="display:none">
+	<div id="righttab" class="tab"></div>
+</div>
+<div id="main_menu" class="tab">
+	<div id="start_game" onclick='character_info()'>
+	START GAME
+	</div>
+</div>
+<div id="character_info" class="tab">
+<div id="char_info1">
+Name<input type=text name=name>
+<select id="class">
+
+<option value="fighter">Fighter</option>
+<option value="mage">Mage</option>
+<option value="rogue">Rogue</option>
+</select>
+</div>
+<div id="stats">
+<table>
+<tr><td>Movement(M)</td><td><input type="number" name=m size=5></td></tr>
+<tr><td>Weapon skill(WS)</td><td><input type="number" name=ws size=5></td></tr>
+<tr><td>Balistic skill(BS)</td><td><input type="number" name=bs size=5></td></tr>
+<tr><td>Strength(S)</td><td><input type="number" name=s size=5></td></tr>
+<tr><td>Toughness(T)</td><td><input type="number" name=t size=5></td></tr>
+<tr><td>Wounds(W)</td><td><input type="number" name=w size=5></td></tr>
+<tr><td>Initiative(I)</td><td><input type="number" name=i size=5></td></tr>
+<tr><td>Attacks(A)</td><td><input type="number" name=a size=5></td></tr>
+<tr><td>Leadership(LD)</td><td><input type="number" name=ld ></td></tr>
+</table>
+</div>
+<div id="char_img" onclick="nextimg()"></div>
+<div id="to_game" onclick='story()'>Start game</div>
+
+
+
+
+</div>
+<div id="story" class="tab">
+
+<marquee   scrolldelay="590" id="story_textarea" behavior="scroll" direction="up">Nested atop the cliff that rise from Vojvodina, the citadel of Smederevo houses the finest and most comperhensive collection of writings of the face of Serbia. It is an imposing fortress, kept in strict isolation from the intrigues that occasionaly plague the rest of the world. It is secluded, highly regimented, and it is home<br><br>Within these hallowed halls of knowledge, your story begins. You have spent most of your twenty years of life within this keep`s austere walls, under the tutelage of the sage Gorion. Acting as your father, he has raised you on a thousand tales of heroes and monsters,lovers and infidels, battles and tragedies.However, one story was allways left untold: that of your true heritage. You have been told that you are an orphan, but your past is largely unknown.</marquee>
+
+<div id="story_done" onclick='game()'></div>
+</div>
+	</body>
+</html>
